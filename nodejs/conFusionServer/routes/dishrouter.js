@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
 const authenticate = require('../authenticate');
 
 const Dishes = require('../models/dishes');
@@ -220,7 +221,7 @@ dishRouter
     );
   })
 
-  .put(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+  .put(authenticate.verifyUser, (req, res, next) => {
     Dishes.findById(req.params.dishId)
       .then(
         (dish) => {
@@ -257,7 +258,7 @@ dishRouter
       )
       .catch((err) => next(err));
   })
-  .delete(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+  .delete(authenticate.verifyUser, (req, res, next) => {
     Dishes.findById(req.params.dishId)
       .then(
         (dish) => {
