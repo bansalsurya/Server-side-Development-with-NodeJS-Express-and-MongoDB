@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 require('mongoose-currency').loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
-var commentSchema = new Schema(
+const commentSchema = new Schema(
   {
     rating: {
       type: Number,
@@ -64,6 +64,4 @@ const dishSchema = new Schema(
   }
 );
 
-var Dishes = mongoose.model('Dish', dishSchema);
-
-module.exports = Dishes;
+module.exports = mongoose.model('Dish', dishSchema);
