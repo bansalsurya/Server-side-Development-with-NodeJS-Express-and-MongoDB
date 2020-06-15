@@ -10,7 +10,7 @@ leaderRouter.use(bodyParser.json());
 leaderRouter
   .route('/')
   .get((req, res, next) => {
-    Leaders.find({})
+    Leaders.find(req.query)
       .then(
         (leaders) => {
           res.statusCode = 200;
